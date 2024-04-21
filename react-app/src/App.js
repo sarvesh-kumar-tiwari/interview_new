@@ -2,10 +2,12 @@ import React,{useState,useEffect} from 'react';
 import './App.css';
 function App() {
   const [data,setData]= useState([]);
+  const [name,setName]= useState('');
+  const [email,setEmail]= useState('');
+ const [error,setError]= useState('')
 
   const deleteUser = async (id) => {
-    console.log('delete ')
-    try {
+   try {
       const response = await fetch(`http://localhost:8080/delete/${id}`, {
         method: 'GET'
       });
@@ -32,6 +34,34 @@ function App() {
     }
   };
 
+  const submitButton= async (e)=>{
+    e.preventDefault();
+    try {
+      const data = {
+        name:name,
+        email:email
+      };
+      const response = await fetch('http://localhost:8080/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+          setName('');
+          setEmail('');
+          getAPIData();
+      } else {
+        return response.json().then(data => {
+            setError(data.message);
+        })
+      }
+    } catch (error) {
+     // console.error('Error deleting user:', error);
+      console.log(error);
+    }
+  }
   
   useEffect(()=>{ 
      getAPIData();
@@ -40,6 +70,20 @@ function App() {
   return (
     <div className="App">
      <h1>User List</h1>
+    <span className="error-message"> {error}</span>
+     <form className="form">
+       <div className="input">
+        <label>Name</label>
+          <input type="text" name="name"  placeholder="Enter name.." value={name} onChange={(e)=>setName(e.target.value)}/>
+       </div>
+       <div className="input">
+       <label>Email</label>
+          <input type="text" name="email" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+       </div>
+       <div className="input">
+         <button onClick={submitButton}>Save</button>
+       </div>
+     </form>
      <table border="1">
       <thead>
         <tr>

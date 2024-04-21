@@ -2,9 +2,11 @@ const mongoose =require('mongoose');
 const schema = new  mongoose.Schema({
     name:String,
     age:Number,
-    email:String,
+    email:{
+        type:String,
+        unique:true,
+    },
     city:String,
 })
 
-const userModel = mongoose.model('users',schema);
-module.exports =userModel;
+module.exports = mongoose.model('users',schema);;

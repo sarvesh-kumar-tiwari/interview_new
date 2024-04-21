@@ -39,3 +39,53 @@
 table{
   width: 100%;
 }
+.form {
+  width: 300px; /* Adjust the width as needed */
+  margin: auto; /* Center the form horizontally */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block; /* Make labels appear on a new line */
+  font-weight: bold;
+  text-align: left;
+}
+
+input[type="text"] {
+  width: 100%; /* Make input fields fill the entire width */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+button {
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+.error-message
+{
+  background-color: hsl(27, 67%, 60%);
+  color: #fff;
+  font-weight: 400;
+  padding: 0.5em 0.5em 0.5em;
+  border-radius:10px solid;
+
+}
