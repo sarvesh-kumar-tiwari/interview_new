@@ -7,5 +7,4 @@ const schema = new  mongoose.Schema({
 })
 
 const userModel = mongoose.model('users',schema);
-
 module.exports =userModel;
