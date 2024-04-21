@@ -1,0 +1,28 @@
+git credential-cache exit
+
+rm ~/.git-credentials
+
+git config --global user.name "Your GitHub Username"
+git config --global user.email "Your GitHub Email Address"
+
+
+
+git config --global credential.helper store
+
+
+git credential approve
+
+
+ -- step git ignore --
+
+.gitignore
+
+*.log
+node_modules/
+
+
+git add .gitignore
+git commit -m "Add .gitignore file"
+
+
+git push origin main
